@@ -1,0 +1,139 @@
+/* =========================================================
+   BrandShield AI — responsive.css
+   Desktop-first responsive rules.
+   Breakpoints:
+     ≥1440px: wide desktop (base layout)
+     ≥1024px: desktop
+      <1024px: tablet
+      <768px:  mobile
+   ========================================================= */
+
+/* --------  Tablet (<=1200px)  -------- */
+@media (max-width: 1200px) {
+  .grid.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .src-grid    { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .searchbox   { width: 220px; }
+  .span-9, .span-8, .span-7, .span-6, .span-5, .span-4, .span-3 { grid-column: span 12; }
+  .brandcard__stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --------  Tablet / small desktop (<=1024px)  -------- */
+@media (max-width: 1024px) {
+  :root { --sidebar-w: 72px; }
+  .brand { padding: 6px 6px 16px; justify-content: center; }
+  .brand__text { display: none; }
+  .sidebar-item span { display: none; }
+  .sidebar-item { justify-content: center; padding: 12px 0; }
+  .sidebar-status { display: none; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+  .view-root { padding: 20px; }
+}
+
+/* --------  Mobile (<=768px)  -------- */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+
+  /* Collapsible sidebar */
+  .sidebar {
+    position: fixed;
+    top: var(--banner-h);
+    left: 0;
+    height: calc(100vh - var(--banner-h));
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform .28s cubic-bezier(.2,.8,.2,1);
+    z-index: 60;
+    box-shadow: var(--shadow-lg);
+  }
+  body.sidebar-open .sidebar { transform: translateX(0); }
+  body.sidebar-open::after {
+    content: "";
+    position: fixed; inset: var(--banner-h) 0 0 0;
+    background: rgba(10,37,64,.35);
+    backdrop-filter: blur(2px);
+    z-index: 55;
+  }
+  .sidebar-item span { display: inline; }
+  .sidebar-item { justify-content: flex-start; padding: 10px 12px; }
+  .brand { justify-content: flex-start; padding: 6px 8px 16px; }
+  .brand__text { display: block; }
+  .sidebar-status { display: block; }
+
+  .sidebar-toggle { display: inline-flex; }
+
+  /* Topbar restack */
+  .topbar {
+    padding: 0 14px;
+    gap: 10px;
+    height: auto;
+    min-height: var(--topbar-h);
+    flex-wrap: wrap;
+    align-content: center;
+  }
+  .topbar-title { order: 2; flex-basis: 100%; padding-bottom: 10px; }
+  .topbar-actions { order: 1; flex: 1 1 auto; }
+  .searchbox { width: 100%; }
+  .user-chip__meta { display: none; }
+  #btn-scan span { display: none; }
+  #btn-scan { padding: 0 10px; }
+
+  .view-root { padding: 14px; }
+  .view-root > .grid { gap: 14px; }
+
+  .grid.cols-4,
+  .grid.cols-3,
+  .grid.cols-2 { grid-template-columns: 1fr; }
+  .src-grid { grid-template-columns: 1fr 1fr; }
+  .brandcard__stats { grid-template-columns: repeat(2, 1fr); }
+
+  .card-header { padding: 14px; flex-wrap: wrap; }
+  .card-body { padding: 14px; }
+
+  .filterbar { padding: 12px; }
+  .filterbar .form-control { min-width: 100%; }
+  .filterbar .spacer { display: none; }
+
+  .demo-banner { padding: 0 12px; font-size: 11px; }
+  .demo-banner__label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .drawer__panel { width: 100vw; }
+
+  .modal-host__panel {
+    width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    border-radius: var(--r-lg);
+  }
+  .modal-host__body { padding: 16px; max-height: 60vh; }
+
+  .list-edit__row { grid-template-columns: 1fr; }
+  .list-edit__row .row-fields.row-2,
+  .list-edit__row .row-fields.row-3 { grid-template-columns: 1fr; }
+
+  .split-list { grid-template-columns: 1fr; gap: 2px 0; padding: 4px 0; }
+  .split-list > .k { margin-top: 6px; }
+
+  .slider-row { grid-template-columns: 1fr 46px; }
+  .slider-row .val { grid-column: 2; grid-row: 1; }
+  .slider-row input[type=range] { grid-column: 1 / -1; }
+
+  table.table th, table.table td { padding: 10px; font-size: 12.5px; }
+  .table-wrap { border-radius: 10px; }
+
+  .kpi__value { font-size: 24px; }
+
+  .toast-host { left: 12px; right: 12px; bottom: 12px; max-width: none; }
+}
+
+/* --------  Very small screens (<=380px)  -------- */
+@media (max-width: 380px) {
+  .src-grid { grid-template-columns: 1fr; }
+  .user-chip { display: none; }
+}
+
+/* --------  Wide desktop (>1600px)  -------- */
+@media (min-width: 1600px) {
+  :root { --sidebar-w: 280px; }
+  .view-root { padding: 28px; }
+}

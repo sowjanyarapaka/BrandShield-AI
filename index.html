@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BrandShield AI — Digital Risk Protection Platform. Detect impersonation. Protect digital identity." />
+  <title>BrandShield AI — Digital Risk Protection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/background.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <!-- Animated digital background -->
+  <div id="bg-layer" class="bg-layer" aria-hidden="true"></div>
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Sticky DEMO MODE banner -->
+  <div id="demo-banner" class="demo-banner" role="status" aria-live="polite">
+    <span class="demo-banner__dot"></span>
+    <span class="demo-banner__label">DEMO MODE · Fictional data · Simulated analysis only · No live scanning</span>
+    <button id="demo-banner-dismiss" class="demo-banner__dismiss" aria-label="Dismiss demo banner" title="Dismiss (banner returns on reload)">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div id="app-shell" class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar" aria-label="Primary">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30">
+            <defs>
+              <linearGradient id="bsLogoG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00D4FF"/>
+                <stop offset="100%" stop-color="#0F766E"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 2 L28 7 L28 20 C28 25 22 30 16 30 C10 30 4 25 4 20 L4 7 Z" fill="url(#bsLogoG)" opacity="0.22"/>
+            <path d="M16 5 L25 9 L25 19 C25 23 21 27 16 27 C11 27 7 23 7 19 L7 9 Z" fill="none" stroke="url(#bsLogoG)" stroke-width="2"/>
+            <path d="M11 17 L15 20 L21 13" fill="none" stroke="#00D4FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="brand__text">
+          <div class="brand__name">BrandShield<span>AI</span></div>
+          <div class="brand__tag">Digital Risk Protection</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" role="navigation">
+        <a class="sidebar-item" data-route="dashboard" href="#dashboard">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="sidebar-item" data-route="brands" href="#brands">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+          <span>Brand Profiler</span>
+        </a>
+        <a class="sidebar-item" data-route="social" href="#social">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+          <span>Social Media</span>
+        </a>
+        <a class="sidebar-item" data-route="apps" href="#apps">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>App Store</span>
+        </a>
+        <a class="sidebar-item" data-route="websites" href="#websites">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          <span>Website</span>
+        </a>
+        <a class="sidebar-item" data-route="investigations" href="#investigations">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M8 11h6M11 8v6"/></svg>
+          <span>Threat Investigation</span>
+        </a>
+        <a class="sidebar-item" data-route="reports" href="#reports">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Alerts &amp; Reports</span>
+        </a>
+        <a class="sidebar-item" data-route="settings" href="#settings">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+        <div class="sidebar-sep" data-role-only="admin" style="height:1px;background:rgba(255,255,255,0.06);margin:14px 10px;display:none;"></div>
+        <a class="sidebar-item" data-route="admin-companies" data-role-only="admin" href="#admin/companies" style="display:none;">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
+          <span>Companies</span>
+        </a>
+        <a class="sidebar-item" data-route="admin-users" data-role-only="admin" href="#admin/users" style="display:none;">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Users</span>
+        </a>
+        <a class="sidebar-item" data-route="admin-platform" data-role-only="admin" href="#admin/platform" style="display:none;">
+          <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+          <span>Platform Summary</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-status">
+        <div class="ss-row"><span class="ss-dot ss-dot--ok"></span><span class="ss-k">Scan engine</span><span class="ss-v" id="ss-engine">Simulated</span></div>
+        <div class="ss-row"><span class="ss-dot ss-dot--warn"></span><span class="ss-k">Live sources</span><span class="ss-v">Not connected</span></div>
+        <div class="ss-row"><span class="ss-dot ss-dot--ok"></span><span class="ss-k">Last scan</span><span class="ss-v" id="ss-lastscan">—</span></div>
+      </div>
+    </aside>
+
+    <!-- MAIN COLUMN -->
+    <main id="main-col" class="main-col">
+
+      <!-- TOP BAR -->
+      <header id="topbar" class="topbar">
+        <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="topbar-title">
+          <h1 id="view-title" class="topbar-title__h">Dashboard</h1>
+          <div id="view-crumbs" class="topbar-title__crumbs">Home · Overview</div>
+        </div>
+        <div class="topbar-actions">
+          <div class="searchbox" role="search">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="global-search" type="search" placeholder="Search brands, threats, cases…" aria-label="Global search" />
+          </div>
+          <button id="btn-scan" class="btn btn--scan" title="Run simulated scan">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.5-7.1"/><polyline points="21 3 21 9 15 9"/></svg>
+            <span>Run Scan</span>
+          </button>
+          <button id="btn-notify" class="btn btn--ghost icon-only" title="Notifications" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span class="btn__pill">4</span>
+          </button>
+          <div class="user-chip" id="user-chip" title="Account">
+            <div class="user-chip__avatar" aria-hidden="true">A</div>
+            <div class="user-chip__meta">
+              <div class="user-chip__name">Analyst</div>
+              <div class="user-chip__role">SOC Demo</div>
+            </div>
+            <button id="btn-logout" class="btn btn--ghost icon-only" title="Sign out" aria-label="Sign out" style="margin-left:8px;display:none;" data-role-logout="1">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEWPORT -->
+      <section id="view-root" class="view-root" aria-live="polite">
+        <!-- View markup is rendered by JS -->
+      </section>
+    </main>
+  </div>
+
+  <!-- Detail drawer (off-canvas right) -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer__backdrop" data-close-drawer="1"></div>
+    <div class="drawer__panel">
+      <div class="drawer__header">
+        <div>
+          <div id="drawer-kicker" class="drawer__kicker">Details</div>
+          <h3 id="drawer-title" class="drawer__title">—</h3>
+        </div>
+        <button class="btn btn--ghost icon-only" data-close-drawer="1" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="drawer-body" class="drawer__body"></div>
+    </div>
+  </aside>
+
+  <!-- Modal host -->
+  <div id="modal-host" class="modal-host" aria-hidden="true">
+    <div class="modal-host__backdrop"></div>
+    <div class="modal-host__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-host__header">
+        <h3 id="modal-title" class="modal-host__title">—</h3>
+        <button class="btn btn--ghost icon-only" data-close-modal="1" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-host__body"></div>
+      <div id="modal-footer" class="modal-host__footer"></div>
+    </div>
+  </div>
+
+  <!-- Toast host -->
+  <div id="toast-host" class="toast-host" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- JS modules (order matters) -->
+  <script src="js/demo-data.js"></script>
+  <script src="js/detection-engine.js"></script>
+  <script src="js/risk-engine.js"></script>
+  <script src="js/ui-components.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/export.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/brand-profiler.js"></script>
+  <script src="js/views/social-monitoring.js"></script>
+  <script src="js/views/appstore-monitoring.js"></script>
+  <script src="js/views/website-monitoring.js"></script>
+  <script src="js/views/threat-investigation.js"></script>
+  <script src="js/views/alerts-reports.js"></script>
+  <script src="js/views/settings.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
